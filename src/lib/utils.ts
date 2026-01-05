@@ -41,9 +41,9 @@ export function generateId(): string {
 }
 
 export function getMonthLabel(monthOffset: number): string {
-  const date = new Date();
-  date.setMonth(date.getMonth() + monthOffset);
-  return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+  const now = new Date();
+  const date = new Date(now.getFullYear(), now.getMonth() + monthOffset, 1);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
 export function getMonthLabels(count: number): string[] {

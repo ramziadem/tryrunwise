@@ -68,7 +68,7 @@ export function CashFlowChart() {
   };
 
   return (
-    <Card className="col-span-full">
+    <Card className="col-span-full" data-chart="cash-flow">
       <CardHeader>
         <CardTitle className="text-lg font-semibold">Cash Flow Projection</CardTitle>
         <p className="text-sm text-muted-foreground">

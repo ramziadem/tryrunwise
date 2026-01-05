@@ -4,16 +4,32 @@ import Link from 'next/link';
 import { useStore } from '@/store/useStore';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { exportToPdf } from '@/lib/exportPdf';
+import { calculateMetrics, generateProjections } from '@/lib/calculations';
 import { 
   Download, 
   RotateCcw, 
   Database,
   Linkedin,
+  FileDown,
 } from 'lucide-react';
 
 export function Header() {
   const loadSampleData = useStore((state) => state.loadSampleData);
   const resetAll = useStore((state) => state.resetAll);
+  const inputs = useStore((state) => state.inputs);
+  const scenarios = useStore((state) => state.scenarios);
+
+  const handleExportPdf = async () => {
+    const metrics = calculateMetrics(inputs);
+    const projections = generateProjections(inputs);
+    await exportToPdf({
+      inputs,
+      metrics,
+      projections,
+      scenarios,
+    });
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -31,6 +47,15 @@ export function Header() {
           >
             <Database className="h-4 w-4" />
             Load Demo
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleExportPdf}
+            className="hidden sm:flex gap-2"
+          >
+            <FileDown className="h-4 w-4" />
+            Export PDF
           </Button>
           <Button
             variant="ghost"
