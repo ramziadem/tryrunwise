@@ -100,6 +100,31 @@ export interface ScenarioComparison {
   projections: MonthlyProjection[];
 }
 
+// AI Research Types
+
+export type ResearchProvider = 'perplexity' | 'openai' | 'google';
+
+export interface ResearchModel {
+  id: string;
+  name: string;
+  provider: ResearchProvider;
+  providerName: string;
+  description: string;
+  strengths: string[];
+  hasWebSearch: boolean;
+  recommended: boolean;
+  apiKeyUrl: string;
+}
+
+export interface ResearchResult {
+  answer: string;
+  citations: string[];
+  model: string;
+  provider: ResearchProvider;
+  timestamp: number;
+  query: string;
+}
+
 // Store State
 export interface FinancialState {
   inputs: FinancialInputs;
