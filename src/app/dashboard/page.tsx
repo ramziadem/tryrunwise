@@ -5,6 +5,7 @@ import { CashFlowChart } from '@/components/dashboard/CashFlowChart';
 import { InsightsPanel } from '@/components/dashboard/InsightsPanel';
 import { ScenarioBuilder } from '@/components/dashboard/ScenarioBuilder';
 import { FinancialInputs } from '@/components/dashboard/FinancialInputs';
+import { ResearchPanel } from '@/components/dashboard/ResearchPanel';
 import { Header, Footer } from '@/components/layout/Header';
 
 export default function DashboardPage() {
@@ -30,6 +31,7 @@ export default function DashboardPage() {
           <div className="lg:col-span-2 space-y-6">
             <CashFlowChart />
             <InsightsPanel />
+            <ResearchPanel />
           </div>
 
           {/* Right Column - Inputs & Scenarios */}
